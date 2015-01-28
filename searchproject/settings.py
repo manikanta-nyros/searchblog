@@ -42,6 +42,7 @@ INSTALLED_APPS = (
      'django.contrib.humanize',
     #'adding haystack'
     'haystack',
+    'aloha_editor',
 )
 
 MIDDLEWARE_CLASSES = (

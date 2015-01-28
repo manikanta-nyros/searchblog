@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
 from django.core.urlresolvers import reverse
@@ -27,6 +27,13 @@ def index(request):
     template = loader.get_template('searchapp/index.html')
     context = RequestContext(request, {'latest_notes_list': notes, })
     return HttpResponse(template.render(context))
+
+def detail(request,note_id):
+    try:
+        note = Note.objects.get(pk=note_id)
+    except Note.DoesNotExist:
+        raise Http404
+    return render_to_response('note_detail.html', {'note': note})
 
 def create_note(request):
     if request.method == "GET":

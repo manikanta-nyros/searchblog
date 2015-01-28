@@ -19,7 +19,7 @@
     {% for note in latest_notes_list %}
         <ul class="list-group">
         <li class="list-group-item">
-            <h1>{{ note.title }}</h1>
+            <h1><a href="{% url 'searchapp:detail' note.id %}">{{ note.title }}</a></h1>
             <p>Posted {{ note.timestamp|naturaltime }} </p>
             <p>{{note.id|ordinal }}-post</p>
             <p>{{ note.body }}</p>

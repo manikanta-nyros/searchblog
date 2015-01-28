@@ -1,0 +1,8 @@
+{% load aloha_editor %}
+{% extends 'base.html' %}
+  {% if user.is_authenticated %}
+    {% include "aloha_editor/css.html" %}
+    {% include "aloha_editor/js.html" %}
+  {% endif %}
+  <h1>{{ note.title }}</h1>
+  {% aloha_editor note.body %}
